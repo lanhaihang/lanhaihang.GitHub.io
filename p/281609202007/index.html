@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><meta name="keywords" content="[object Object]"><meta name="description" content="@Author: YiHua Lee @Address: Guangdong province, China"><meta name="author" content="YiHua Lee"><title>Linux终端命令 - Lee Hua&#039;s Blog</title><meta description="@Author: YiHua Lee @Address: Guangdong province, China"><meta property="og:type" content="article"><meta property="og:title" content="Linux终端命令"><meta property="og:url" content="https://www.stringbug.com/p/281609202007/"><meta property="og:site_name" content="Lee Hua"><meta property="og:description" content="@Author: YiHua Lee @Address: Guangdong province, China"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2020-07-09T08:28:36.000Z"><meta property="article:modified_time" content="2020-07-09T08:29:36.839Z"><meta property="article:author" content="YiHua Lee"><meta property="article:tag" content="Linux"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://www.stringbug.com/img/avatar.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.stringbug.com/p/281609202007/"},"headline":"Linux终端命令","image":["https://www.stringbug.com/img/avatar.png"],"datePublished":"2020-07-09T08:28:36.000Z","dateModified":"2020-07-09T08:29:36.839Z","author":{"@type":"Person","name":"YiHua Lee"},"description":"@Author: YiHua Lee @Address: Guangdong province, China"}</script><link rel="alternative" href="/atom.xml" title="Lee Hua&#039;s Blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?21f50d86d5ef6f504a853dccf54610ca";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.12/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><link rel="stylesheet" href="/css/style.css"><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="/js/globalUtils.js"></script><link rel="stylesheet" href="/live2d/waifu.css"><script type="text/javascript" async src="/live2d/autoload.js"></script></head><body class="is-3-column has-navbar-fixed-top"><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Lee Hua&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/message">留言</a><a class="navbar-item" href="/album">相册</a><a class="navbar-item" href="/friend">友链</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/LeeYiua/"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="thumbnail" src="/../../thumbnail/image02.png" alt="Linux终端命令"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-07-09 16:28:36  <a class="commentCountImg" href="/p/281609202007/#comment-container"><span class="display-none-class">c7102b91e92b2d85762c6e17e05cbe6b</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="c7102b91e92b2d85762c6e17e05cbe6b">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>18 分钟  <i class="fas fa-pencil-alt"> </i>2.7 k</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Linux终端命令</h1><div class="content"><p>@Author: YiHua Lee @Address: Guangdong province, China</p>
+<a id="more"></a>
+<h2 id="终端命令格式"><a href="#终端命令格式" class="headerlink" title="终端命令格式"></a>终端命令格式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> [-options] [parameter]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>说明：</p>
+<p>- command : 命令名称， 相应功能的英文单词或单词的缩写</p>
+<p>- [-options] : 选项，可用来对命令进行控制, 也可以省略</p>
+<p>- parameter : 传给命令的参数，可以是 零个、一个 或者 多个</p>
+</blockquote>
+<h2 id="显示文件列表命令"><a href="#显示文件列表命令" class="headerlink" title="显示文件列表命令"></a>显示文件列表命令</h2><blockquote>
+<p>ls 是英文单词 list 的简写, 其功能为列出目录的内容，是用户最常用的命令之一</p>
+</blockquote>
+<h3 id="ls常用选项"><a href="#ls常用选项" class="headerlink" title="ls常用选项"></a>ls常用选项</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>显示指定目录下所有子目录与文件, 包含隐藏文件</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>以列表方式显示文件的详细信息</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>配合 -l 以人性化的方式显示文件大小</td>
+</tr>
+</tbody></table>
+<h3 id="常见使用命令"><a href="#常见使用命令" class="headerlink" title="常见使用命令"></a>常见使用命令</h3><blockquote>
+<p><strong>ls</strong>                      查看当前目录内容 (缺点: 隐藏文件看不到)</p>
+<p><strong>ls</strong> -a                  查看当前目录内容 ,包括隐藏文件 </p>
+<p><strong>ls</strong> <strong>-</strong>al                 查看目录内容的详细信息(查看文件类型、权限、大小等) </p>
+<p><strong>ls</strong> <strong>-</strong>lh                 查看目录内容的详细信息,以K,M,G方式显示文件大小 </p>
+<p><strong>ls</strong> <strong>/</strong>root              查看/root目录下内容</p>
+</blockquote>
+<h2 id="目录查看、目录创建和目录删除命令"><a href="#目录查看、目录创建和目录删除命令" class="headerlink" title="目录查看、目录创建和目录删除命令"></a>目录查看、目录创建和目录删除命令</h2><h3 id="pwd命令"><a href="#pwd命令" class="headerlink" title="pwd命令"></a>pwd命令</h3><blockquote>
+<p>查看当前所在目录</p>
+</blockquote>
+<h3 id="mkdir命令"><a href="#mkdir命令" class="headerlink" title="mkdir命令"></a>mkdir命令</h3><blockquote>
+<p>该命令用于创建目录。注意: 新建目录的名称 不能与当前目录中 已有的目录或文件 同名</p>
+</blockquote>
+<ol>
+<li>创建没有层级关系的目录：<code>mkdir test</code></li>
+<li>创建有层级的目录：<code>mkdir -p /root/aaa/bbb</code></li>
+</ol>
+<h3 id="rm命令"><a href="#rm命令" class="headerlink" title="rm命令"></a>rm命令</h3><blockquote>
+<p>该命令用于删除文件或者目录</p>
+</blockquote>
+<p>参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>英文</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-f</td>
+<td>force  (强制)</td>
+<td>强制删除,忽略不存在的文件或目录, 无需提示</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>recursive  (递归)</td>
+<td>递归地删除目录下的内容, 删除目录时必须加此参数</td>
+</tr>
+</tbody></table>
+<ol>
+<li><p>删除目录有提醒</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -r test</span><br></pre></td></tr></table></figure>
+
+<p>提示：<code>rm：是否删除目录 &quot;test&quot;？</code></p>
+</li>
+<li><p>直接删除目录（不管有没有内容）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -fr test</span><br></pre></td></tr></table></figure>
+
+<p>没有提示。</p>
+</li>
+</ol>
+<h2 id="目录切换命令"><a href="#目录切换命令" class="headerlink" title="目录切换命令"></a>目录切换命令</h2><blockquote>
+<p>cd 是英文单词 change directory 的缩写, 其功能为 更改当前的工作目录, 也是用户最常用的命令之一</p>
+<p>注意: linux的所有 目录 和 文件名 都是大小写敏感的</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd</td>
+<td>切换到用户主目录（root用户主目录是/root，其他用户是/home/用户名）</td>
+</tr>
+<tr>
+<td>cd 目录</td>
+<td>切换到指定目录下</td>
+</tr>
+<tr>
+<td>cd ..</td>
+<td>切换到上级目录</td>
+</tr>
+<tr>
+<td>cd -</td>
+<td>可以在最近的两次目录之间切换</td>
+</tr>
+</tbody></table>
+<h2 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h2><h3 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a>touch命令</h3><blockquote>
+<p>touch命令，创建文件</p>
+</blockquote>
+<ol>
+<li><p>在当前目录创建a.txt文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch a.txt</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>在/root目录创建a.txt文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch &#x2F;root&#x2F;a.txt</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a>mv命令</h3><blockquote>
+<p>通过mv 命令可以用来移动文件或目录, 也可以给文件或目录重命名</p>
+</blockquote>
+<ol>
+<li><p>在目录 A 中，有一个文件 a.txt，将 a.txt 文件移动到目录 B 中（A、B路径一样）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv A&#x2F;a.txt B&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>重命名一个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv 旧文件名 新文件名</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h3><blockquote>
+<p>查看文件内容</p>
+</blockquote>
+<p><code>cat 文件路径</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;root&#x2F;A&#x2F;a.txt</span><br></pre></td></tr></table></figure>
+
+<p>查看文件 a.txt 的内容</p>
+<h3 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a>cp命令</h3><blockquote>
+<p> 拷贝命令，可以拷贝文件或文件夹</p>
+</blockquote>
+<ol>
+<li><p>将a.txt复制到dir1目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp a.txt dir1</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>将a.txt复制到b.txt</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp a.txt b.txt</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h2 id="压缩和解压命令tar"><a href="#压缩和解压命令tar" class="headerlink" title="压缩和解压命令tar"></a>压缩和解压命令tar</h2><p>参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-c</td>
+<td>创建一个新tar文件</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示运行过程的信息</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>指定文件名</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>调用gzip压缩命令进行压缩</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>查看压缩文件的内容</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>解开tar文件</td>
+</tr>
+</tbody></table>
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><ol>
+<li><p>将文件解压到当前目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf XXX.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>将文件解压到指定目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf XXX.tar.gz -C &#x2F;root&#x2F;dir</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><ol>
+<li><p>打包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf  test.tar &#x2F;root&#x2F;test</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>打包并压缩</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -czvf test.tar.gz &#x2F;root&#x2F;test</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h2 id="文件查找命令"><a href="#文件查找命令" class="headerlink" title="文件查找命令"></a>文件查找命令</h2><h3 id="find命令"><a href="#find命令" class="headerlink" title="find命令"></a>find命令</h3><blockquote>
+<p>find命令用于查找符合条件的文件</p>
+</blockquote>
+<ol>
+<li><p>查找 <code>/</code> 目录下以文件名 AAA 开头的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &#x2F; -name &#39;AAA*&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>查找 <code>/root</code>目录下文件大小大于100M的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &#x2F;root -type f -size +100M</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h3><blockquote>
+<p>grep命令可以对文件进行文本查询</p>
+</blockquote>
+<ol>
+<li><p>在 <code>A.txt</code> 文件中查找内容 <code>HellowGrep</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep HellowGrep A.txt</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>在 <code>B.txt</code> 文件中查找内容 <code>123</code> ，并且高亮显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep 123 B.txt --color</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="which命令"><a href="#which命令" class="headerlink" title="which命令"></a>which命令</h3><blockquote>
+<p>which 查看可执行文件的位置</p>
+</blockquote>
+<ol>
+<li><p>查找pwd命令的路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which pwd</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>查找start-all.sh命令的路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which start-all.sh</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h2 id="系统管理命令"><a href="#系统管理命令" class="headerlink" title="系统管理命令"></a>系统管理命令</h2><h3 id="ps命令"><a href="#ps命令" class="headerlink" title="ps命令"></a>ps命令</h3><blockquote>
+<p>ps命令用来列出系统中当前运行的那些进程</p>
+</blockquote>
+<p>参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-A</td>
+<td>显示所有进程（等价于-e）</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>显示一个终端的所有进程，除了会话引线</td>
+</tr>
+<tr>
+<td>-N</td>
+<td>忽略选择</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>显示所有进程，但省略所有的会话引线</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>显示没有控制终端的进程，同时显示各个命令的具体路径。dx不可合用。</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>(pid)进程使用cpu的时间</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>选择有效的用户id或者是用户名</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>显示组的所有进程</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>全部列出，通常和其他选项联用</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>长格式</td>
+</tr>
+<tr>
+<td>-j</td>
+<td>作业格式</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>用户自定义格式</td>
+</tr>
+<tr>
+<td>v</td>
+<td>以虚拟存储器格式显示</td>
+</tr>
+<tr>
+<td>s</td>
+<td>以信号格式显示</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>显示所有的线程</td>
+</tr>
+<tr>
+<td>-H</td>
+<td>显示进程的层次(和其它的命令合用)</td>
+</tr>
+<tr>
+<td>e</td>
+<td>命令之后显示环境</td>
+</tr>
+<tr>
+<td>h</td>
+<td>不显示第一行</td>
+</tr>
+</tbody></table>
+<p>列的说明：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/July%202020/20200709154421.png' alt='20200709154421'/>
+
+<blockquote>
+<p>USER：    用户名</p>
+<p>PID：    进程ID（Process ID）</p>
+<p>%CPU：    进程的cpu占用率</p>
+<p>%MEM：    进程的内存占用率</p>
+<p>VSZ：    进程所使用的虚存的大小（Virtual Size）</p>
+<p>RSS：    进程使用的驻留集大小或者是实际内存的大小，Kbytes字节。</p>
+<p>TTY：    与进程关联的终端（tty）</p>
+<p>STAT：    进程的状态：进程状态使用字符表示的（STAT的状态码）</p>
+<p>TIME：    进程使用的总cpu时间</p>
+<p>COMMAND：    正在执行的命令行命令</p>
+</blockquote>
+<p>查看所有进程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="kill命令"><a href="#kill命令" class="headerlink" title="kill命令"></a>kill命令</h3><blockquote>
+<p>kill命令用于终止执行中的程序</p>
+</blockquote>
+<ul>
+<li><p>杀死pid为12345的进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 12345</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="管道命令"><a href="#管道命令" class="headerlink" title="管道命令"></a>管道命令</h3><blockquote>
+<p>管道是Linux命令中重要的一个概念，其作用是将一个命令的输出用作另一个命令的输入</p>
+</blockquote>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/July%202020/20200709154724.png' alt='20200709154724'/>
+
+<ul>
+<li><p>查询名称中包含java的进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep java</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="用户的创建和删除命令"><a href="#用户的创建和删除命令" class="headerlink" title="用户的创建和删除命令"></a>用户的创建和删除命令</h2><h3 id="用户的创建"><a href="#用户的创建" class="headerlink" title="用户的创建"></a>用户的创建</h3><blockquote>
+<p>用户的创建： <code>useradd [用户名]</code> 、<code>passwd [用户名]</code></p>
+</blockquote>
+<ol>
+<li><p>创建新用户 Boss</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd Boss</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>设置用户 Boss 的密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd Boss</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="用户的删除"><a href="#用户的删除" class="headerlink" title="用户的删除"></a>用户的删除</h3><blockquote>
+<p>用户的删除：<code>userdel -r [用户名]</code></p>
+</blockquote>
+<p>删除用户Boss</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel -r Boss</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="权限管理命令"><a href="#权限管理命令" class="headerlink" title="权限管理命令"></a>权限管理命令</h2><h3 id="文件权限概述"><a href="#文件权限概述" class="headerlink" title="文件权限概述"></a>文件权限概述</h3><blockquote>
+<p>Linux操作系统是多任务多用户操作系统，每当我们使用用户名登录操作系统时，Linux都会对该用户进行认证、授权审计等操作。操作系统为了识别每个用户，会给每个用户定义一个ID，就是UID。用户组就相当于多个用户的容器；在Linux系统中，用户组也有一个ID ——— GID。</p>
+<p>在Linux操作系统中，root的权限是最高的，相当于windows的administrator，拥有最高权限，能执行任何命令和操作,而其他用户都是普通用户。</p>
+<p>Linux对文件创建者（所属用户），所属用户组，其他用户都赋予不同的权限。</p>
+</blockquote>
+<h3 id="文件权限解读"><a href="#文件权限解读" class="headerlink" title="文件权限解读"></a>文件权限解读</h3><table>
+<thead>
+<tr>
+<th>文件目录列查看权限</th>
+<th>权限说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/July%202020/20200709155759.png' alt='20200709155759'/></td>
+<td><img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/July%202020/20200709155831.png' alt='20200709155831'/></td>
+</tr>
+</tbody></table>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/July%202020/20200709160035.png' alt='20200709160035'/>
+
+<blockquote>
+<p><strong>r</strong>: 对文件是指可读取内容 对目录是可以ls</p>
+<p><strong>w</strong>: 对文件是指可修改文件内容，对目录 是指可以在其中创建或删除子节点(目录或文件)</p>
+<p><strong>x</strong>: 对文件是指是否可以运行这个文件，对目录是指是否可以cd进入这个目录</p>
+</blockquote>
+<h3 id="chmod命令"><a href="#chmod命令" class="headerlink" title="chmod命令"></a>chmod命令</h3><blockquote>
+<p>chmod命令用来变更文件或目录的权限</p>
+</blockquote>
+<ol>
+<li><p>赋予 a.txt 文件 666 权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 666 a.txt</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>给 a.txt 文件属主添加 x 权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x a.txt</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>赋予 a.txt 文件 761 权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u&#x3D;rwx,g&#x3D;rw,o&#x3D;x</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h2 id="网络和服务管理命令"><a href="#网络和服务管理命令" class="headerlink" title="网络和服务管理命令"></a>网络和服务管理命令</h2><h3 id="hostname命令"><a href="#hostname命令" class="headerlink" title="hostname命令"></a>hostname命令</h3><blockquote>
+<p>hostname命令：查看主机名</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 ~]# hostname</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node1</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="ifconfig命令"><a href="#ifconfig命令" class="headerlink" title="ifconfig命令"></a>ifconfig命令</h3><blockquote>
+<p>查看主机ip地址</p>
+</blockquote>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/July%202020/20200709161547.png' alt='20200709161547'/>
+
+
+
+<h3 id="service命令"><a href="#service命令" class="headerlink" title="service命令"></a>service命令</h3><blockquote>
+<p>service命令是用来控制系统服务的实用工具，它以启动、停止、重新启动和关闭系统服务，还可以显示所有系统服务的当前状态</p>
+</blockquote>
+<ol>
+<li>查看网络服务状态 ：<code>service network status</code></li>
+<li>停止网络服务：<code>service network stop</code></li>
+<li>启动网络服务：<code>service network start</code></li>
+<li>重启网络服务：<code>service network restart</code></li>
+</ol>
+<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><h3 id="ln命令"><a href="#ln命令" class="headerlink" title="ln命令"></a>ln命令</h3><blockquote>
+<p>ln命令可以用来创建软连接，类似于创建快捷方式</p>
+</blockquote>
+<p>命令格式：<code>ln [参数] [源文件或目录] [目标文件或目录]</code></p>
+<p>如：<code>ln -s jdk1.8.0_162 jdk</code></p>
+<h3 id="clear命令"><a href="#clear命令" class="headerlink" title="clear命令"></a>clear命令</h3><blockquote>
+<p>清屏命令，还可以使用快捷方式：ctrl + l（注意，是L，因为小写显示的看起来像i）</p>
+</blockquote>
+<h2 id="vi-编辑器"><a href="#vi-编辑器" class="headerlink" title="vi 编辑器"></a>vi 编辑器</h2><blockquote>
+<p>vi是visual interface的简称, 是Linux中最经典的文本编辑器</p>
+<p>vi的核心设计思想：让程序员的手指始终保持在键盘的 核心区域, 就能完成所有编辑操作</p>
+</blockquote>
+<h3 id="Vi编辑器三种模式"><a href="#Vi编辑器三种模式" class="headerlink" title="Vi编辑器三种模式"></a>Vi编辑器三种模式</h3><ol>
+<li><p>命令模式：</p>
+<blockquote>
+<p>打开文件首先进入命令模式, 是使用vi的入口</p>
+<p>通过 命令 对文件进行常规的编辑操作, 例如 定位 翻页 复制 粘贴 删除</p>
+</blockquote>
+</li>
+<li><p>末行模式：</p>
+<blockquote>
+<p>要退出 vi 返回到控制台, 需要在莫行模式下输入命令<br>末行模式 是 vi 的出口</p>
+<p>执行 保存 退出等操作</p>
+</blockquote>
+</li>
+<li><p>编辑模式：</p>
+<blockquote>
+<p>正常的编辑文字</p>
+</blockquote>
+</li>
+</ol>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/July%202020/20200709162626.png' alt='20200709162626'/>
+
+
+
+<h3 id="命令行模式常用命令"><a href="#命令行模式常用命令" class="headerlink" title="命令行模式常用命令"></a>命令行模式常用命令</h3><table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>o</td>
+<td>在当前行后面插入一空行</td>
+</tr>
+<tr>
+<td>O</td>
+<td>在当前行前面插入一空行</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>删除光标所在行</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td>从光标位置向下连续删除 n 行</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>复制光标所在行</td>
+</tr>
+<tr>
+<td>nyy</td>
+<td>从光标位置向下连续复制n行</td>
+</tr>
+<tr>
+<td>p</td>
+<td>粘贴</td>
+</tr>
+<tr>
+<td>u</td>
+<td>撤销上一次命令</td>
+</tr>
+<tr>
+<td>gg</td>
+<td>回到文件顶部</td>
+</tr>
+<tr>
+<td>G</td>
+<td>回到文件末尾</td>
+</tr>
+<tr>
+<td>/str</td>
+<td>查找内容 <code>str</code></td>
+</tr>
+</tbody></table>
+<h3 id="底行模式常用命令"><a href="#底行模式常用命令" class="headerlink" title="底行模式常用命令"></a>底行模式常用命令</h3><table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:w 文件</td>
+<td>另存为</td>
+</tr>
+<tr>
+<td>:w</td>
+<td>保存(ctrl + s)</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>退出, 如果没有保存,不允许退出</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>强行退出, 不保存退出</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td>保存并退出</td>
+</tr>
+<tr>
+<td>:x</td>
+<td>保存并退出</td>
+</tr>
+<tr>
+<td>:set nu</td>
+<td>设置行号</td>
+</tr>
+<tr>
+<td>:%s/旧文本/新文本/g</td>
+<td>文本替换</td>
+</tr>
+</tbody></table>
+</div><ul class="post-copyright"><li><strong>本文标题：</strong><a href="https://www.stringbug.com/p/281609202007/">Linux终端命令</a></li><li><strong>本文作者：</strong><a href="https://www.stringbug.com">YiHua Lee</a></li><li><strong>本文链接：</strong><a href="https://www.stringbug.com/p/281609202007/">https://www.stringbug.com/p/281609202007/</a></li><li><strong>版权声明：</strong><span>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</span></li></ul><div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相关文章</span><br><span>  1.<a class="is-size-6" href="/p/391409202007/" target="_blank">Linux 操作系统的简单认识</a><br></span><span>  2.<a class="is-size-6" href="/p/531329202004/" target="_blank">《鸟哥的Linux私房菜--基础篇》第四、五章学习心得</a><br></span><span>  3.<a class="is-size-6" href="/p/471329202004/" target="_blank">Linux 常用命令</a><br></span></div></div><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/social-share.js/1.0.16/css/share.min.css"><div class="social-share"></div><script src="https://cdnjs.loli.net/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/251711202007/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">初识 Ajax</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/391409202007/"><span class="level-item">Linux 操作系统的简单认识</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><div class="title is-5">评论</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/gitalk/1.6.0/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () { 
+            var gitalk = new Gitalk({
+            language:'zh-CN',
+            id: 'c7102b91e92b2d85762c6e17e05cbe6b',
+            repo: 'LeeYiua.github.io',
+            owner: 'LeeYiua',
+            clientID: 'a20ca25986ec6943de5a',
+            clientSecret: '8cb6ef445e0b72d72727df2843eff95264006e51',
+            admin: ["LeeYiua"],
+            createIssueManually: true,
+            distractionFreeMode: false,
+            perPage: 10,
+            pagerDirection: 'last',
+            
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container')});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget toc-scroll" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-终端命令格式" href="#终端命令格式"><span>终端命令格式</span></a></li><li><a class="is-flex toc-item" id="toc-item-显示文件列表命令" href="#显示文件列表命令"><span>显示文件列表命令</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-ls常用选项" href="#ls常用选项"><span>ls常用选项</span></a></li><li><a class="is-flex toc-item" id="toc-item-常见使用命令" href="#常见使用命令"><span>常见使用命令</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-目录查看、目录创建和目录删除命令" href="#目录查看、目录创建和目录删除命令"><span>目录查看、目录创建和目录删除命令</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-pwd命令" href="#pwd命令"><span>pwd命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-mkdir命令" href="#mkdir命令"><span>mkdir命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-rm命令" href="#rm命令"><span>rm命令</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-目录切换命令" href="#目录切换命令"><span>目录切换命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-文件操作命令" href="#文件操作命令"><span>文件操作命令</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-touch命令" href="#touch命令"><span>touch命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-mv命令" href="#mv命令"><span>mv命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-cat命令" href="#cat命令"><span>cat命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-cp命令" href="#cp命令"><span>cp命令</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-压缩和解压命令tar" href="#压缩和解压命令tar"><span>压缩和解压命令tar</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-解压" href="#解压"><span>解压</span></a></li><li><a class="is-flex toc-item" id="toc-item-压缩" href="#压缩"><span>压缩</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-文件查找命令" href="#文件查找命令"><span>文件查找命令</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-find命令" href="#find命令"><span>find命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-grep命令" href="#grep命令"><span>grep命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-which命令" href="#which命令"><span>which命令</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-系统管理命令" href="#系统管理命令"><span>系统管理命令</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-ps命令" href="#ps命令"><span>ps命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-kill命令" href="#kill命令"><span>kill命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-管道命令" href="#管道命令"><span>管道命令</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-用户的创建和删除命令" href="#用户的创建和删除命令"><span>用户的创建和删除命令</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-用户的创建" href="#用户的创建"><span>用户的创建</span></a></li><li><a class="is-flex toc-item" id="toc-item-用户的删除" href="#用户的删除"><span>用户的删除</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-权限管理命令" href="#权限管理命令"><span>权限管理命令</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-文件权限概述" href="#文件权限概述"><span>文件权限概述</span></a></li><li><a class="is-flex toc-item" id="toc-item-文件权限解读" href="#文件权限解读"><span>文件权限解读</span></a></li><li><a class="is-flex toc-item" id="toc-item-chmod命令" href="#chmod命令"><span>chmod命令</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-网络和服务管理命令" href="#网络和服务管理命令"><span>网络和服务管理命令</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-hostname命令" href="#hostname命令"><span>hostname命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-ifconfig命令" href="#ifconfig命令"><span>ifconfig命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-service命令" href="#service命令"><span>service命令</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-其他命令" href="#其他命令"><span>其他命令</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-ln命令" href="#ln命令"><span>ln命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-clear命令" href="#clear命令"><span>clear命令</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-vi-编辑器" href="#vi-编辑器"><span>vi 编辑器</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-Vi编辑器三种模式" href="#Vi编辑器三种模式"><span>Vi编辑器三种模式</span></a></li><li><a class="is-flex toc-item" id="toc-item-命令行模式常用命令" href="#命令行模式常用命令"><span>命令行模式常用命令</span></a></li><li><a class="is-flex toc-item" id="toc-item-底行模式常用命令" href="#底行模式常用命令"><span>底行模式常用命令</span></a></li></ul></li></ul></div></div><script type="text/javascript" async>
+        $(document).ready(function () { //参考自 https://github.com/ppoffice/hexo-theme-icarus/pull/616/files
+            var observerTopMargin;
+            var scrollObserver;
+            var headerElems = $(".headerlink");
+            var activeTocItem;
+        
+            function initIntersectionObserver(docHeight) {
+                observerTopMargin = docHeight;
+                scrollObserver = new IntersectionObserver(scrollCallBack,
+                    {
+                        root: null,  // viewpoint
+                        rootMargin: docHeight + "px 0px -80% 0px"  // cover top 30% of viewport to the top of document
+                    })
+            }
+        
+            function scrollCallBack(entries, observer) {
+                if ($(window).scrollTop() > observerTopMargin * 0.7) { 
+                    // User somehow scroll to 70% of observerTopMargin (which is inited as 200% document height)
+                    // Observer top margin need to extend to cover all the space to the top of the document
+                    initIntersectionObserver(observerTopMargin * 2)
+                    observer.disconnect();
+                    return;
+                }
+                let toActive;
+                if (entries[0].intersectionRatio == 1) {  // enter viewed area
+                    let entry = entries.reduce((u, v) => (u.target.toc_id > v.target.toc_id ? u : v));  // get the lowest item
+                    toActive = $("#toc-item-" + $(entry.target).attr("href").substr(1));
+                } else {
+                    let entry = entries.reduce((u, v) => (u.target.toc_id < v.target.toc_id ? u : v));  // get the highest item
+                    let idx = Math.max(entry.target.toc_id - 1, 0);
+                    toActive = $("#toc-item-" + $(headerElems[idx]).attr("href").substr(1));
+                }
+                if (activeTocItem) activeTocItem.removeClass("is-current");
+                activeTocItem = toActive
+                activeTocItem.addClass("is-current");
+            }
+        
+            initIntersectionObserver($(document).height() * 2);
+            headerElems.each(function (index, obj) {
+                obj.toc_id = index;
+                scrollObserver.observe(obj);
+            })
+        });</script></div><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="is-rounded" src="/img/avatar.png" alt="Lee Hua"></figure><p class="title is-size-4 is-block line-height-inherit">Lee Hua</p><p class="is-size-6 is-block">世间美好，与你环环相扣</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Guangdong province, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">168</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">12</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">33</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.stringbug.com/" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/LeeYiua"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://www.facebook.com/profile.php?id=100042691507857"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://www.weibo.com/u/7259950838"><i class="fab fa-weibo"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:lyh9420@icloud.com"><i class="fa fa-envelope"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><a class="media-left" href="/p/131014202007/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image12.png" alt="Maven 学习笔记1"></p></a><div class="media-content size-small"><p><time dateTime="2020-07-14T02:13:40.000Z">2020-07-14 10:13:40</time></p><p class="title is-6"><a class="link-muted" href="/p/131014202007/">Maven 学习笔记1</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Maven/">Maven</a></p></div></article><article class="media"><a class="media-left" href="/p/211913202007/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image11.png" alt="Maven 3.5.4 的安装（MacOS系统）"></p></a><div class="media-content size-small"><p><time dateTime="2020-07-13T11:21:09.000Z">2020-07-13 19:21:09</time></p><p class="title is-6"><a class="link-muted" href="/p/211913202007/">Maven 3.5.4 的安装（MacOS系统）</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/">部署安装</a></p></div></article><article class="media"><a class="media-left" href="/p/291513202007/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image10.png" alt="Redis 学习笔记2（Java 操作Redis）"></p></a><div class="media-content size-small"><p><time dateTime="2020-07-13T07:29:57.000Z">2020-07-13 15:29:57</time></p><p class="title is-6"><a class="link-muted" href="/p/291513202007/">Redis 学习笔记2（Java 操作Redis）</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Redis/">Redis</a></p></div></article><article class="media"><a class="media-left" href="/p/230813202007/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image09.png" alt="Redis 持久化机制"></p></a><div class="media-content size-small"><p><time dateTime="2020-07-13T00:23:46.000Z">2020-07-13 08:23:46</time></p><p class="title is-6"><a class="link-muted" href="/p/230813202007/">Redis 持久化机制</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Redis/">Redis</a></p></div></article><article class="media"><a class="media-left" href="/p/410713202007/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image08.png" alt="Redis 学习笔记1"></p></a><div class="media-content size-small"><p><time dateTime="2020-07-12T23:41:41.000Z">2020-07-13 07:41:41</time></p><p class="title is-6"><a class="link-muted" href="/p/410713202007/">Redis 学习笔记1</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Redis/">Redis</a></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/Java/"><span class="level-start"><span class="level-item">Java</span></span><span class="level-end"><span class="level-item tag">75</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Java-Web/"><span class="level-start"><span class="level-item">Java Web</span></span><span class="level-end"><span class="level-item tag">36</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Java-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="level-start"><span class="level-item">Java 设计模式</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Maven/"><span class="level-start"><span class="level-item">Maven</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/MySQL/"><span class="level-start"><span class="level-item">MySQL</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Redis/"><span class="level-start"><span class="level-item">Redis</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/"><span class="level-start"><span class="level-item">其他</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="level-start"><span class="level-item">数据结构</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><a class="level is-mobile is-marginless" href="/categories/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/06/"><span class="level-start"><span class="level-item">六月 2020</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/05/"><span class="level-start"><span class="level-item">五月 2020</span></span><span class="level-end"><span class="level-item tag">108</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/04/"><span class="level-start"><span class="level-item">四月 2020</span></span><span class="level-end"><span class="level-item tag">31</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Java%E5%9F%BA%E7%A1%80/"><span class="tag">Java基础</span><span class="tag is-grey-lightest">63</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/"><span class="tag">Python网络爬虫</span><span class="tag is-grey-lightest">16</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySQL%E5%9F%BA%E7%A1%80/"><span class="tag">MySQL基础</span><span class="tag is-grey-lightest">15</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Request-Response/"><span class="tag">Request&amp;Response</span><span class="tag is-grey-lightest">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java-JDBC/"><span class="tag">Java JDBC</span><span class="tag is-grey-lightest">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Servlet/"><span class="tag">Servlet</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Jsp/"><span class="tag">Jsp</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"><span class="tag">Java网络编程</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Redis/"><span class="tag">Redis</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tomcat/"><span class="tag">Tomcat</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/LeetCode/"><span class="tag">LeetCode</span><span class="tag is-grey-lightest">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JQuery/"><span class="tag">JQuery</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Maven/"><span class="tag">Maven</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="tag">Python操作数据库</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Ajax/"><span class="tag">Ajax</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BootStrap/"><span class="tag">BootStrap</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HBase/"><span class="tag">HBase</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML/"><span class="tag">HTML</span><span class="tag is-grey-lightest">1</span></a></div></div><div class="field is-grouped is-grouped-multiline"><a class="tags has-addons" href="/tags/"><span class="tag">查看全部&gt;&gt;</span></a></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=LeeHuasBlog&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="LeeHuasBlog" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button is-primary" type="submit" value="订阅"></div></div><p class="help">输入邮箱开始订阅，更博后邮件通知！</p></form></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Lee Hua&#039;s Blog" height="28"></a><p class="size-small"><span>&copy; 2020 YiHua Lee</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> <br><span>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已运行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/24 14:41:28')", 250,"");</script><br></span><div class="size-small"><span>❤️感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光临！❤️</span></div></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/removeif"><i class="fab fa-github"></i></a></p></div><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="2364053447" theme="#2980b9" loop="all" autoplay="false" order="list" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://www.stringbug.com',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back-to-top.js" defer></script><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.12/js/lightgallery-all.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><!--!--><!--!--><!--!--><script src="/js/toc.js" defer></script><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('a20ca25986ec6943de5a','8cb6ef445e0b72d72727df2843eff95264006e51','LeeYiua','LeeYiua.github.io',false);})</script><link rel="stylesheet" href="/css/insight.css"><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"></div></div></div></div><script>(function (window) {
+            var INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: '文章',
+                    PAGES: '页面',
+                    CATEGORIES: '分类',
+                    TAGS: '标签',
+                    UNTITLED: '(无标题)',
+                },
+                CONTENT_URL: '/content.json',
+            };
+            window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+        })(window);</script><script src="/js/insight.js" defer></script></body></html>

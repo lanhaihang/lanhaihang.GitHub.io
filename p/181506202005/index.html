@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><meta name="keywords" content="[object Object]"><meta name="description" content="@Author: YiHua Lee        @Address: Guangdong province, China"><meta name="author" content="YiHua Lee"><title>初识数据库连接池 - Lee Hua&#039;s Blog</title><meta description="@Author: YiHua Lee        @Address: Guangdong province, China"><meta property="og:type" content="article"><meta property="og:title" content="初识数据库连接池"><meta property="og:url" content="https://www.stringbug.com/p/181506202005/"><meta property="og:site_name" content="Lee Hua"><meta property="og:description" content="@Author: YiHua Lee        @Address: Guangdong province, China"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2020-05-06T07:18:39.000Z"><meta property="article:modified_time" content="2020-05-23T10:54:59.527Z"><meta property="article:author" content="YiHua Lee"><meta property="article:tag" content="Java JDBC"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://www.stringbug.com/img/avatar.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.stringbug.com/p/181506202005/"},"headline":"初识数据库连接池","image":["https://www.stringbug.com/img/avatar.png"],"datePublished":"2020-05-06T07:18:39.000Z","dateModified":"2020-05-23T10:54:59.527Z","author":{"@type":"Person","name":"YiHua Lee"},"description":"@Author: YiHua Lee        @Address: Guangdong province, China"}</script><link rel="alternative" href="/atom.xml" title="Lee Hua&#039;s Blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?21f50d86d5ef6f504a853dccf54610ca";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.12/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><link rel="stylesheet" href="/css/style.css"><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="/js/globalUtils.js"></script><link rel="stylesheet" href="/live2d/waifu.css"><script type="text/javascript" async src="/live2d/autoload.js"></script></head><body class="is-3-column has-navbar-fixed-top"><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Lee Hua&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/message">留言</a><a class="navbar-item" href="/album">相册</a><a class="navbar-item" href="/friend">友链</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/LeeYiua/"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="thumbnail" src="/../../thumbnail/image03.png" alt="初识数据库连接池"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-05-06 15:18:39  <a class="commentCountImg" href="/p/181506202005/#comment-container"><span class="display-none-class">21db5516d347e902a310603e4d73e538</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="21db5516d347e902a310603e4d73e538">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>12 分钟  <i class="fas fa-pencil-alt"> </i>1.8 k</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">初识数据库连接池</h1><div class="content"><p>@Author: YiHua Lee        @Address: Guangdong province, China</p>
+<a id="more"></a>
+
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个；释放空闲时间超过最大空闲时间的数据库连接来避免因为没有释放数据库连接而引起的数据库连接遗漏。 这项技术能明显提高对数据库操作的性能。它其实就是一个容器，用来存放数据库连接对象的容器。</p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>数据库连接是一种关键的、有限的、昂贵的资源，这一点在多用户的网页应用程序中体现得尤为突出。对数据库连接的管理能显著影响到整个应用程序的伸缩性和健壮性，影响到程序的性能指标。数据库连接池正是针对这个问题提出来的。</p>
+<h1 id="影响因素"><a href="#影响因素" class="headerlink" title="影响因素"></a>影响因素</h1><p>数据库连接池在初始化时将创建一定数量的数据库连接放到连接池中，这些数据库连接的数量是由最小数据库连接数制约。无论这些数据库连接是否被使用，连接池都将一直保证至少拥有这么多的连接数量。连接池的最大数据库连接数量限定了这个连接池能占有的最大连接数，当应用程序向连接池请求的连接数超过最大连接数量时，这些请求将被加入到等待队列中。数据库连接池的最小连接数和最大连接数的设置要考虑到下列几个因素：</p>
+<h2 id="最小连接数"><a href="#最小连接数" class="headerlink" title="最小连接数"></a>最小连接数</h2><p>是连接池一直保持的数据库连接，所以如果应用程序对数据库连接的使用量不大，将会有大量的数据库连接资源被浪费。</p>
+<h2 id="最大连接数"><a href="#最大连接数" class="headerlink" title="最大连接数"></a>最大连接数</h2><p>是连接池能申请的最大连接数，如果数据库连接请求超过此数，后面的数据库连接请求将被加入到等待队列中，这会影响之后的数据库操作。</p>
+<h2 id="最小连接数与最大连接数差距"><a href="#最小连接数与最大连接数差距" class="headerlink" title="最小连接数与最大连接数差距"></a>最小连接数与最大连接数差距</h2><p>最小连接数与最大连接数相差太大，那么最先的连接请求将会获利，之后超过最小连接数量的连接请求等价于建立一个新的数据库连接。不过，这些大于最小连接数的数据库连接在使用完不会马上被释放，它将被放到连接池中等待重复使用或是空闲超时后被释放。</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>连接池基本的思想是在系统初始化的时候，将数据库连接作为对象存储在内存中，当用户需要访问数据库时，并非建立一个新的连接，而是从连接池中取出一个已建立的空闲连接对象。使用完毕后，用户也并非将连接关闭，而是将连接放回连接池中，以供下一个请求访问使用。而连接的建立、断开都由连接池自身来管理。同时，还可以通过设置连接池的参数来控制连接池中的初始连接数、连接的上下限数以及每个连接的最大使用次数、最大空闲时间等等。也可以通过其自身的管理机制来监视数据库连接的数量、使用情况等。</p>
+<h1 id="Java中的数据库连接池"><a href="#Java中的数据库连接池" class="headerlink" title="Java中的数据库连接池"></a>Java中的数据库连接池</h1><ol>
+<li>C3P0：是一个开放源代码的JDBC连接池，它在lib目录中与Hibernate一起发布，包括了实现jdbc3和jdbc2扩展规范说明的Connection 和Statement 池的DataSources 对象。</li>
+</ol>
+<ol start="2">
+<li>Proxool：是一个Java SQL Driver驱动程序，提供了对选择的其它类型的驱动程序的连接池封装。可以非常简单的移植到现存的代码中，完全可配置，快速、成熟、健壮。可以透明地为现存的JDBC驱动程序增加连接池功能。</li>
+</ol>
+<ol start="3">
+<li>Jakarta DBCP：DBCP是一个依赖Jakartacommons-pool对象池机制的数据库连接池。DBCP可以直接的在应用程序中使用。</li>
+</ol>
+<ol start="4">
+<li>DDConnectionBroker：是一个简单、轻量级的数据库连接池。</li>
+</ol>
+<ol start="5">
+<li>DBPool：是一个高效、易配置的数据库连接池。它除了支持连接池应有的功能之外，还包括了一个对象池，使用户能够开发一个满足自己需求的数据库连接池。</li>
+</ol>
+<ol start="6">
+<li>XAPool：是一个XA数据库连接池。它实现了javax.sql.XADataSource并提供了连接池工具。</li>
+</ol>
+<ol start="7">
+<li>Primrose：是一个Java开发的数据库连接池。当前支持的容器包括Tomcat4&amp;5、Resin3与JBoss3。它同样也有一个独立的版本，可以在应用程序中使用而不必运行在容器中。Primrose通过一个WEB接口来控制SQL处理的追踪、配置，以及动态池管理。在重负荷的情况下可进行连接请求队列处理。</li>
+</ol>
+<ol start="8">
+<li><p>SmartPool：是一个连接池组件，它模仿应用服务器对象池的特性。SmartPool能够解决一些临界问题如连接泄漏（connection leaks）、连接阻塞、打开的JDBC对象（如Statements、PreparedStatements）等。SmartPool的特性包括：</p>
+<ul>
+<li><p>支持多个pool</p>
+</li>
+<li><p>自动关闭相关联的JDBC对象</p>
+</li>
+<li><p>在所设定time-outs之后察觉连接泄漏</p>
+</li>
+<li><p>追踪连接使用情况</p>
+</li>
+<li><p>强制启用最近最少用到的连接</p>
+</li>
+<li><p>把SmartPool“包装”成现存的一个pool</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="9">
+<li>MiniConnectionPoolManager：是一个轻量级JDBC数据库连接池。它只需要Java1.5（或更高）并且没有依赖第三方包。</li>
+</ol>
+<ol start="10">
+<li>BoneCP：是一个快速、开源的数据库连接池。帮用户管理数据连接，让应用程序能更快速地访问数据库。比C3P0/DBCP连接池速度快25倍。</li>
+</ol>
+<ol start="11">
+<li><p>Druid：Druid不仅是一个数据库连接池，还包含一个ProxyDriver、一系列内置的JDBC组件库、一个SQL Parser。</p>
+<p>支持所有JDBC兼容的数据库，包括Oracle、MySql、Derby、Postgresql、SQL Server、H2等。针对Oracle和MySql做了特别优化，比如：</p>
+<ul>
+<li>Oracle的PS Cache内存占用优化</li>
+<li>MySql的ping检测优化</li>
+</ul>
+</li>
+</ol>
+<p>　　Druid提供了MySql、Oracle、Postgresql、SQL-92的SQL的完整支持，这是一个手写的高性能SQL Parser，支持Visitor模式，使得分析SQL的抽象语法树很方便。</p>
+<p>　　简单SQL语句用时10微秒以内，复杂SQL用时30微秒。</p>
+<p>　　通过Druid提供的SQL Parser可以在JDBC层拦截SQL做相应处理，比如说分库分表、审计等。Druid防御SQL注入攻击的WallFilter，就是通过Druid的SQL Parser分析语义实现的。</p>
+</div><ul class="post-copyright"><li><strong>本文标题：</strong><a href="https://www.stringbug.com/p/181506202005/">初识数据库连接池</a></li><li><strong>本文作者：</strong><a href="https://www.stringbug.com">YiHua Lee</a></li><li><strong>本文链接：</strong><a href="https://www.stringbug.com/p/181506202005/">https://www.stringbug.com/p/181506202005/</a></li><li><strong>版权声明：</strong><span>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</span></li></ul><div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相关文章</span><br><span>  1.<a class="is-size-6" href="/p/291506202005/" target="_blank">Spring JDBC 的简单使用</a><br></span><span>  2.<a class="is-size-6" href="/p/231506202005/" target="_blank">数据库连接池 —— Druid的简单使用</a><br></span><span>  3.<a class="is-size-6" href="/p/201506202005/" target="_blank">数据库连接池 —— C3P0的简单使用</a><br></span><span>  4.<a class="is-size-6" href="/p/131506202005/" target="_blank">JDBC 控制事务（MySQL为例）</a><br></span><span>  5.<a class="is-size-6" href="/p/061506202005/" target="_blank">JDBC 常用类/接口详解（MySQL为例）</a><br></span><span>  6.<a class="is-size-6" href="/p/011506202005/" target="_blank">JDBC 快速入门（MySQL）</a><br></span><span>  7.<a class="is-size-6" href="/p/191106202005/" target="_blank">Java 中的注解</a><br></span><span>  8.<a class="is-size-6" href="/p/141106202005/" target="_blank">Java 初步了解反射机制</a><br></span></div></div><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/social-share.js/1.0.16/css/share.min.css"><div class="social-share"></div><script src="https://cdnjs.loli.net/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/201506202005/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">数据库连接池 —— C3P0的简单使用</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/131506202005/"><span class="level-item">JDBC 控制事务（MySQL为例）</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><div class="title is-5">评论</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/gitalk/1.6.0/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () { 
+            var gitalk = new Gitalk({
+            language:'zh-CN',
+            id: '21db5516d347e902a310603e4d73e538',
+            repo: 'LeeYiua.github.io',
+            owner: 'LeeYiua',
+            clientID: 'a20ca25986ec6943de5a',
+            clientSecret: '8cb6ef445e0b72d72727df2843eff95264006e51',
+            admin: ["LeeYiua"],
+            createIssueManually: true,
+            distractionFreeMode: false,
+            perPage: 10,
+            pagerDirection: 'last',
+            
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container')});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget toc-scroll" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-概述" href="#概述"><span>概述</span></a></li><li><a class="is-flex toc-item" id="toc-item-背景" href="#背景"><span>背景</span></a></li><li><a class="is-flex toc-item" id="toc-item-影响因素" href="#影响因素"><span>影响因素</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-最小连接数" href="#最小连接数"><span>最小连接数</span></a></li><li><a class="is-flex toc-item" id="toc-item-最大连接数" href="#最大连接数"><span>最大连接数</span></a></li><li><a class="is-flex toc-item" id="toc-item-最小连接数与最大连接数差距" href="#最小连接数与最大连接数差距"><span>最小连接数与最大连接数差距</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-原理" href="#原理"><span>原理</span></a></li><li><a class="is-flex toc-item" id="toc-item-Java中的数据库连接池" href="#Java中的数据库连接池"><span>Java中的数据库连接池</span></a></li></ul></div></div><script type="text/javascript" async>
+        $(document).ready(function () { //参考自 https://github.com/ppoffice/hexo-theme-icarus/pull/616/files
+            var observerTopMargin;
+            var scrollObserver;
+            var headerElems = $(".headerlink");
+            var activeTocItem;
+        
+            function initIntersectionObserver(docHeight) {
+                observerTopMargin = docHeight;
+                scrollObserver = new IntersectionObserver(scrollCallBack,
+                    {
+                        root: null,  // viewpoint
+                        rootMargin: docHeight + "px 0px -80% 0px"  // cover top 30% of viewport to the top of document
+                    })
+            }
+        
+            function scrollCallBack(entries, observer) {
+                if ($(window).scrollTop() > observerTopMargin * 0.7) { 
+                    // User somehow scroll to 70% of observerTopMargin (which is inited as 200% document height)
+                    // Observer top margin need to extend to cover all the space to the top of the document
+                    initIntersectionObserver(observerTopMargin * 2)
+                    observer.disconnect();
+                    return;
+                }
+                let toActive;
+                if (entries[0].intersectionRatio == 1) {  // enter viewed area
+                    let entry = entries.reduce((u, v) => (u.target.toc_id > v.target.toc_id ? u : v));  // get the lowest item
+                    toActive = $("#toc-item-" + $(entry.target).attr("href").substr(1));
+                } else {
+                    let entry = entries.reduce((u, v) => (u.target.toc_id < v.target.toc_id ? u : v));  // get the highest item
+                    let idx = Math.max(entry.target.toc_id - 1, 0);
+                    toActive = $("#toc-item-" + $(headerElems[idx]).attr("href").substr(1));
+                }
+                if (activeTocItem) activeTocItem.removeClass("is-current");
+                activeTocItem = toActive
+                activeTocItem.addClass("is-current");
+            }
+        
+            initIntersectionObserver($(document).height() * 2);
+            headerElems.each(function (index, obj) {
+                obj.toc_id = index;
+                scrollObserver.observe(obj);
+            })
+        });</script></div><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="is-rounded" src="/img/avatar.png" alt="Lee Hua"></figure><p class="title is-size-4 is-block line-height-inherit">Lee Hua</p><p class="is-size-6 is-block">世间美好，与你环环相扣</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Guangdong province, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">168</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">12</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">33</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.stringbug.com/" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/LeeYiua"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://www.facebook.com/profile.php?id=100042691507857"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://www.weibo.com/u/7259950838"><i class="fab fa-weibo"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:lyh9420@icloud.com"><i class="fa fa-envelope"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><a class="media-left" href="/p/131014202007/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image12.png" alt="Maven 学习笔记1"></p></a><div class="media-content size-small"><p><time dateTime="2020-07-14T02:13:40.000Z">2020-07-14 10:13:40</time></p><p class="title is-6"><a class="link-muted" href="/p/131014202007/">Maven 学习笔记1</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Maven/">Maven</a></p></div></article><article class="media"><a class="media-left" href="/p/211913202007/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image11.png" alt="Maven 3.5.4 的安装（MacOS系统）"></p></a><div class="media-content size-small"><p><time dateTime="2020-07-13T11:21:09.000Z">2020-07-13 19:21:09</time></p><p class="title is-6"><a class="link-muted" href="/p/211913202007/">Maven 3.5.4 的安装（MacOS系统）</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85/">部署安装</a></p></div></article><article class="media"><a class="media-left" href="/p/291513202007/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image10.png" alt="Redis 学习笔记2（Java 操作Redis）"></p></a><div class="media-content size-small"><p><time dateTime="2020-07-13T07:29:57.000Z">2020-07-13 15:29:57</time></p><p class="title is-6"><a class="link-muted" href="/p/291513202007/">Redis 学习笔记2（Java 操作Redis）</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Redis/">Redis</a></p></div></article><article class="media"><a class="media-left" href="/p/230813202007/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image09.png" alt="Redis 持久化机制"></p></a><div class="media-content size-small"><p><time dateTime="2020-07-13T00:23:46.000Z">2020-07-13 08:23:46</time></p><p class="title is-6"><a class="link-muted" href="/p/230813202007/">Redis 持久化机制</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Redis/">Redis</a></p></div></article><article class="media"><a class="media-left" href="/p/410713202007/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image08.png" alt="Redis 学习笔记1"></p></a><div class="media-content size-small"><p><time dateTime="2020-07-12T23:41:41.000Z">2020-07-13 07:41:41</time></p><p class="title is-6"><a class="link-muted" href="/p/410713202007/">Redis 学习笔记1</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Redis/">Redis</a></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/Java/"><span class="level-start"><span class="level-item">Java</span></span><span class="level-end"><span class="level-item tag">75</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Java-Web/"><span class="level-start"><span class="level-item">Java Web</span></span><span class="level-end"><span class="level-item tag">36</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Java-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="level-start"><span class="level-item">Java 设计模式</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Maven/"><span class="level-start"><span class="level-item">Maven</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/MySQL/"><span class="level-start"><span class="level-item">MySQL</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Redis/"><span class="level-start"><span class="level-item">Redis</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E5%85%B6%E4%BB%96/"><span class="level-start"><span class="level-item">其他</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="level-start"><span class="level-item">数据结构</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><a class="level is-mobile is-marginless" href="/categories/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/06/"><span class="level-start"><span class="level-item">六月 2020</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/05/"><span class="level-start"><span class="level-item">五月 2020</span></span><span class="level-end"><span class="level-item tag">108</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/04/"><span class="level-start"><span class="level-item">四月 2020</span></span><span class="level-end"><span class="level-item tag">31</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Java%E5%9F%BA%E7%A1%80/"><span class="tag">Java基础</span><span class="tag is-grey-lightest">63</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/"><span class="tag">Python网络爬虫</span><span class="tag is-grey-lightest">16</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySQL%E5%9F%BA%E7%A1%80/"><span class="tag">MySQL基础</span><span class="tag is-grey-lightest">15</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Request-Response/"><span class="tag">Request&amp;Response</span><span class="tag is-grey-lightest">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java-JDBC/"><span class="tag">Java JDBC</span><span class="tag is-grey-lightest">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Servlet/"><span class="tag">Servlet</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Jsp/"><span class="tag">Jsp</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"><span class="tag">Java网络编程</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Redis/"><span class="tag">Redis</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tomcat/"><span class="tag">Tomcat</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/LeetCode/"><span class="tag">LeetCode</span><span class="tag is-grey-lightest">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JQuery/"><span class="tag">JQuery</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Maven/"><span class="tag">Maven</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="tag">Python操作数据库</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Ajax/"><span class="tag">Ajax</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/BootStrap/"><span class="tag">BootStrap</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HBase/"><span class="tag">HBase</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML/"><span class="tag">HTML</span><span class="tag is-grey-lightest">1</span></a></div></div><div class="field is-grouped is-grouped-multiline"><a class="tags has-addons" href="/tags/"><span class="tag">查看全部&gt;&gt;</span></a></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=LeeHuasBlog&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="LeeHuasBlog" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button is-primary" type="submit" value="订阅"></div></div><p class="help">输入邮箱开始订阅，更博后邮件通知！</p></form></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Lee Hua&#039;s Blog" height="28"></a><p class="size-small"><span>&copy; 2020 YiHua Lee</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> <br><span>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已运行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/24 14:41:28')", 250,"");</script><br></span><div class="size-small"><span>❤️感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光临！❤️</span></div></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/removeif"><i class="fab fa-github"></i></a></p></div><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="2364053447" theme="#2980b9" loop="all" autoplay="false" order="list" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://www.stringbug.com',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back-to-top.js" defer></script><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.12/js/lightgallery-all.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><!--!--><!--!--><!--!--><script src="/js/toc.js" defer></script><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('a20ca25986ec6943de5a','8cb6ef445e0b72d72727df2843eff95264006e51','LeeYiua','LeeYiua.github.io',false);})</script><link rel="stylesheet" href="/css/insight.css"><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"></div></div></div></div><script>(function (window) {
+            var INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: '文章',
+                    PAGES: '页面',
+                    CATEGORIES: '分类',
+                    TAGS: '标签',
+                    UNTITLED: '(无标题)',
+                },
+                CONTENT_URL: '/content.json',
+            };
+            window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+        })(window);</script><script src="/js/insight.js" defer></script></body></html>
