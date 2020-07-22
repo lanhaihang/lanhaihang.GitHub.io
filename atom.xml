@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.stringbug.com/"/>
-  <updated>2020-07-14T02:14:40.767Z</updated>
+  <updated>2020-07-22T02:41:21.219Z</updated>
   <id>https://www.stringbug.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MyBatis 学习笔记</title>
+    <link href="https://www.stringbug.com/p/381022202007/"/>
+    <id>https://www.stringbug.com/p/381022202007/</id>
+    <published>2020-07-22T02:38:17.000Z</published>
+    <updated>2020-07-22T02:41:21.219Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;@Author: YiHua Lee @Address: Guangdong province, China&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="MyBatis" scheme="https://www.stringbug.com/categories/MyBatis/"/>
+    
+    
+      <category term="MyBatis" scheme="https://www.stringbug.com/tags/MyBatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Maven 学习笔记1</title>
@@ -408,27 +429,6 @@
     
     
       <category term="LeetCode" scheme="https://www.stringbug.com/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用户信息案例</title>
-    <link href="https://www.stringbug.com/p/151524202006/"/>
-    <id>https://www.stringbug.com/p/151524202006/</id>
-    <published>2020-06-24T07:15:56.000Z</published>
-    <updated>2020-06-24T07:18:12.597Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;@Author: YiHua Lee @Address: Guangdong province, China&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java Web" scheme="https://www.stringbug.com/categories/Java-Web/"/>
-    
-    
-      <category term="Master" scheme="https://www.stringbug.com/tags/Master/"/>
     
   </entry>
   
