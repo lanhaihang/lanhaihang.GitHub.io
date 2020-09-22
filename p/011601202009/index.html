@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><meta name="keywords" content="[object Object]"><meta name="description" content="@Author: YiHua Lee @Address: Guangdong province, China"><meta name="author" content="YiHua Lee"><title>Vue 学习笔记6 - Lee Hua&#039;s Blog</title><meta description="@Author: YiHua Lee @Address: Guangdong province, China"><meta property="og:type" content="article"><meta property="og:title" content="Vue 学习笔记6"><meta property="og:url" content="https://www.stringbug.com/p/011601202009/"><meta property="og:site_name" content="Lee Hua"><meta property="og:description" content="@Author: YiHua Lee @Address: Guangdong province, China"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2020-09-01T08:01:16.000Z"><meta property="article:modified_time" content="2020-09-01T08:01:45.625Z"><meta property="article:author" content="YiHua Lee"><meta property="article:tag" content="Vue"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://www.stringbug.com/img/avatar.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.stringbug.com/p/011601202009/"},"headline":"Vue 学习笔记6","image":["https://www.stringbug.com/img/avatar.png"],"datePublished":"2020-09-01T08:01:16.000Z","dateModified":"2020-09-01T08:01:45.625Z","author":{"@type":"Person","name":"YiHua Lee"},"description":"@Author: YiHua Lee @Address: Guangdong province, China"}</script><link rel="alternative" href="/atom.xml" title="Lee Hua&#039;s Blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?21f50d86d5ef6f504a853dccf54610ca";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.12/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><link rel="stylesheet" href="/css/style.css"><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="/js/globalUtils.js"></script><link rel="stylesheet" href="/live2d/waifu.css"><script type="text/javascript" async src="/live2d/autoload.js"></script></head><body class="is-3-column has-navbar-fixed-top"><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Lee Hua&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/message">留言</a><a class="navbar-item" href="/album">相册</a><a class="navbar-item" href="/friend">友链</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/LeeYiua/"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="thumbnail" src="/../../thumbnail/image03.png" alt="Vue 学习笔记6"></span></div><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2020-09-01 16:01:16  <a class="commentCountImg" href="/p/011601202009/#comment-container"><span class="display-none-class">aa3cd3c94c82fb6fe6e6f14ac53a1203</span><i class="far fa-comment-dots"></i> <span class="commentCount" id="aa3cd3c94c82fb6fe6e6f14ac53a1203">99+</span>  </a><span class="level-item"><i class="far fa-clock"> </i>13 分钟  <i class="fas fa-pencil-alt"> </i>2.0 k</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Vue 学习笔记6</h1><div class="content"><p>@Author: YiHua Lee @Address: Guangdong province, China</p>
+<a id="more"></a>
+<h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><p>Webpack 是一个前端资源的打包工具，它可以将js、image、css等资源当成一个模块进行打包。</p>
+<p>中文官方网站：<a href="https://www.webpackjs.com/">https://www.webpackjs.com/</a></p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200830014342.png' alt='20200830014342'/>
+
+<br/>
+
+<p>官网给出的解释：</p>
+<blockquote>
+<p>本质上，<em>webpack</em> 是一个现代 JavaScript 应用程序的<em>静态模块打包器(module bundler)</em>。当 webpack 处理应用程序时，它会递归地构建一个<em>依赖关系图(dependency graph)</em>，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 <em>bundle</em>。 </p>
+</blockquote>
+<br/>
+
+<p>为什么需要打包？</p>
+<ul>
+<li>将许多碎小文件打包成一个整体，减少单页面内的衍生请求次数，提高网站效率。</li>
+<li>将ES6的高级语法进行转换编译，以兼容老版本的浏览器。</li>
+<li>将代码打包的同时进行混淆，提高代码的安全性。</li>
+</ul>
+<br/>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>webpack支持全局安装和本地安装，官方推荐是本地安装，我们按照官方的来。</p>
+<p>安装最新版本webpack，输入命令：<code>npm install --save-dev webpack</code></p>
+<p> webpack 4+ 版本，你还需要安装 cli ，输入命令：<code>npm install webpack webpack-cli --save-dev</code></p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200830015717.png' alt='20200830015717'/>
+
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200830020116.png' alt='20200830020116'/>
+
+<br/>
+
+<p>此时，我们注意下项目中文件夹下，会有一个package.json文件。（其实早就有了）</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200830014954.png' alt='20200830014954'/>
+
+<br/>
+
+<p>打开文件，可以看到我们之前用npm安装过的文件都会出现在这里：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200830020459.png' alt='20200830020459'/>
+
+<br/>
+
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><p>学习Webpack，你需要先理解四个<strong>核心概念</strong>：</p>
+<ul>
+<li><p>入口(entry)</p>
+<p>webpack打包的起点，可以有一个或多个，一般是js文件。webpack会从启点文件开始，寻找启点直接或间接依赖的其它所有的依赖，包括JS、CSS、图片资源等，作为将来打包的原始数据</p>
+</li>
+<li><p>输出(output)</p>
+<p>出口一般包含两个属性：path和filename。用来告诉webpack打包的目标文件夹，以及文件的名称。目的地也可以有多个。</p>
+</li>
+<li><p>加载器（loader）</p>
+<p>webpack本身只识别Js文件，如果要加载非JS文件，必须指定一些额外的加载器（loader），例如css-loader。然后将这些文件转为webpack能处理的有效模块，最后利用webpack的打包能力去处理。</p>
+</li>
+<li><p>插件(plugins)</p>
+<p>插件可以扩展webpack的功能，让webpack不仅仅是完成打 包，甚至各种更复杂的功能，或者是对打包功能进行优化、压缩，提高效率。</p>
+</li>
+</ul>
+<br/>
+
+<h2 id="编写webpack配置"><a href="#编写webpack配置" class="headerlink" title="编写webpack配置"></a>编写webpack配置</h2><p>接下来，我们编写一个webpack的配置，来指定一些打包的配置项。配置文件的名称，默认就是webpack.config.js，我们放到hello-vue的根目录：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831121946.png' alt='20200831121946'/>
+
+<br/>
+
+<p>配置文件中就是要指定上面说的四个核心概念，入口、出口、加载器、插件。</p>
+<p>不过，加载器和插件是可选的。我们先编写入口和出口</p>
+<br/>
+
+<h3 id="入口entry"><a href="#入口entry" class="headerlink" title="入口entry"></a>入口entry</h3><p>webpack打包的起点，可以有一个或多个，一般是js文件。</p>
+<p>上面例子中新建一个js，把index.html中的部分内容进行集中，然后在index.html中引用这个js。</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831122650.png' alt='20200831122650'/>
+
+<br/>
+
+<p>然后把原来index.html中的js代码全部移动到index.js中</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831122933.png' alt='20200831122933'/>
+
+<br/>
+
+<ul>
+<li><p>原来的index.html中引入了很多其它js，在这里我们使用es6的import语法进行导入。</p>
+</li>
+<li><p>注意，要使用import，就需要在login.js和register.js中添加export导出语句：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831123136.png' alt='20200831123136'/>
+
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831123207.png' alt='20200831123207'/>
+
+<br/>
+</li>
+<li><p>vue-router使用模块化加载后，必须增加一句：<code>Vue.use(VueRouter)</code></p>
+</li>
+</ul>
+<br/>
+
+<p>这样，index.js就成了我们整个配置的入口了。</p>
+<p>我们在webpack.config.js中添加以下内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">'./src/index.js'</span>  <span class="comment">// 指定打包的入口文件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h3 id="output-出口"><a href="#output-出口" class="headerlink" title="output 出口"></a>output 出口</h3><p>出口，就是输出的目的地。一般我们会用一个dist目录，作为打包输出的文件夹：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831134621.png' alt='20200831134621'/>
+
+<br/>
+
+<p>然后，编写webpack.config.js，添加出口配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">'./src/index.js'</span>,  <span class="comment">// 指定打包的入口文件</span></span><br><span class="line">    output: &#123;</span><br><span class="line">        <span class="comment">// path: 输出的目录</span></span><br><span class="line">        path : __dirname + <span class="string">'/dist'</span>,</span><br><span class="line">        filename: <span class="string">'build.js'</span>	 <span class="comment">// 输出的js文件名</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出的目录，__dirname是相对于webpack.config.js配置文件的绝对路径</strong></p>
+<br/>
+
+<h2 id="执行打包"><a href="#执行打包" class="headerlink" title="执行打包"></a>执行打包</h2><p>在控制台输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack --config webpack.config.js</span><br></pre></td></tr></table></figure>
+
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831135647.png' alt='20200831135647'/>
+
+<br/>
+
+<p>尝试打开build.js，你根本看不懂：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831140028.png' alt='20200831140028'/>
+
+<p>所有的js合并为1个，并且对变量名进行了随机打乱，这样就起到了 压缩、混淆的作用。</p>
+<br/>
+
+<h2 id="测试运行"><a href="#测试运行" class="headerlink" title="测试运行"></a>测试运行</h2><p>在index.html中引入刚刚生成的build.js文件，</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831140435.png' alt='20200831140435'/>
+
+<br/>
+
+<p>然后运行：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831141202.gif' alt='20200831141202'/>
+
+<br/>
+
+<h2 id="打包CSS"><a href="#打包CSS" class="headerlink" title="打包CSS"></a>打包CSS</h2><p>我们来编写一段CSS代码，对index的样式做一些美化：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831141435.png' alt='20200831141435'/>
+
+<br/>
+
+<p>内容：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#app</span> <span class="selector-tag">a</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: dodgerblue;</span><br><span class="line">    <span class="attribute">color</span>: white;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#app</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: whitesmoke;</span><br><span class="line">    <span class="attribute">color</span>: dodgerblue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#app</span> <span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#app</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">305px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid dodgerblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h3 id="安装加载器"><a href="#安装加载器" class="headerlink" title="安装加载器"></a>安装加载器</h3><p>前面说过，webpack默认只支持js加载。要加载CSS文件，必须安装加载器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install style-loader css-loader --save-dev</span><br></pre></td></tr></table></figure>
+
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831163933.png' alt='20200831163933'/>
+
+<br/>
+
+<p>此时，在package.json中能看到新安装的：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831164033.png' alt='20200831164033'/>
+
+<br/>
+
+<h3 id="index-js引入css文件"><a href="#index-js引入css文件" class="headerlink" title="index.js引入css文件"></a>index.js引入css文件</h3><p>因为入口在index.js，因此css文件也要在这里引入。依然使用ES6 的模块语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'./css/main.css'</span></span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h3 id="配置加载器"><a href="#配置加载器" class="headerlink" title="配置加载器"></a>配置加载器</h3><p>在webpack.config.js配置文件中配置css的加载器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">'./src/index.js'</span>,  <span class="comment">// 指定打包的入口文件</span></span><br><span class="line">    output: &#123;</span><br><span class="line">        <span class="comment">// path: 输出的目录</span></span><br><span class="line">        path : __dirname+ <span class="string">'/dist'</span>,</span><br><span class="line">        filename: <span class="string">'build.js'</span>    <span class="comment">// 输出的js文件名</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.css$/</span>, <span class="comment">// 通过正则表达式匹配所有以.css后缀的文件</span></span><br><span class="line">                use: [ <span class="comment">// 要使用的加载器，这两个顺序一定不要乱</span></span><br><span class="line">                    <span class="string">'style-loader'</span>,</span><br><span class="line">                    <span class="string">'css-loader'</span></span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h3 id="重新打包"><a href="#重新打包" class="headerlink" title="重新打包"></a>重新打包</h3><p>再次输入打包指令：<code>npx webpack --config webpack.config.js</code></p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831164729.png' alt='20200831164729'/>
+
+<br/>
+
+<p>效果：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831165942.gif' alt='20200831165942'/>
+
+<br/>
+
+<h2 id="script脚本"><a href="#script脚本" class="headerlink" title="script脚本"></a>script脚本</h2><p>我们每次使用npm安装，都会在package.json中留下痕迹，事实上，package.json中不仅可以记录安装的内容，还可编写脚本，让我们运行命令更加快捷。</p>
+<p>我们可以把webpack的命令编入其中：</p>
+<br/>
+
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831170326.png' alt='20200831170326'/>
+
+<p>以后，如果要打包，就可以直接输入：<code>npm run build</code>即可。</p>
+<br/>
+
+<p><code>npm run</code> ：执行npm脚本，后面跟的是配置脚本的名称<code>build</code></p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831170713.png' alt='20200831170713'/>
+
+<br/>
+
+<h2 id="打包HTML"><a href="#打包HTML" class="headerlink" title="打包HTML"></a>打包HTML</h2><p>之前的打包过程中，除了HTML文件外的其它文件都被打包了，当在线上部署时，我们还得自己复制HTML到dist，然后手动添加生成的js到HTML中，这非常不友好。</p>
+<p>webpack中的一个插件：<code>html-webpack-plugin</code>，可以解决这个问题。</p>
+<br/>
+
+<p>1）安装插件：<code>npm install --save-dev html-webpack-plugin</code></p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831171308.png' alt='20200831171308'/>
+
+<br/>
+
+<p>2）在webpack.config.js中添加插件：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831171748.png' alt='20200831171748'/>
+
+<br/>
+
+<p>3）将原来HTML中的引入js代码删除：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831172158.png' alt='20200831172158'/>
+
+<br/>
+
+<p>4）再次打包：<code>npm run build</code></p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831172432.png' alt='20200831172432'/>
+
+<br/>
+
+<p>5）查看dist目录：</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200831172621.png' alt='20200831172621'/>
+
+<br/>
+
+<p>打开index.html，发现已经自动添加了当前目录下的build.js</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200901102626.png' alt='20200901102626'/>
+
+<br/>
+
+<h2 id="热更新的web服务"><a href="#热更新的web服务" class="headerlink" title="热更新的web服务"></a>热更新的web服务</h2><p>刚才的案例中，每次修改任何js或css内容，都必须重新打包，非常麻烦。</p>
+<br/>
+
+<p>webpack给我们提供了一个插件，可以帮我们运行一个web服务，加载页面内容，并且修改js后不需要重新加载就能看到最新结果：</p>
+<p>1）安装插件：<code>npm install webpack-dev-server --save-dev</code></p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200901103307.png' alt='20200901103307'/>
+
+<br/>
+
+<p>2）添加启动脚本</p>
+<p>在package.json中配置script</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"dev"</span>: <span class="string">"webpack-dev-server --inline --hot --open --port 8080 --host 127.0.0.1"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>–inline：自动刷新</p>
+<p>–hot：热加载</p>
+<p>–port：指定端口</p>
+<p>–open：自动在默认浏览器打开</p>
+<p>–host：可以指定服务器的 ip，不指定则为127.0.0.1</p>
+<br/>
+
+<p>3） 运行脚本 <code>npm run dev</code></p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200901104431.png' alt='20200901104431'/>
+
+<br/>
+
+<p>4）效果</p>
+<img src='https://raw.githubusercontent.com/LeeYiua/FigureBed/master/img/August%202020/20200901105218.gif' alt='20200901105218'/>
+
+<br/>
+</div><ul class="post-copyright"><li><strong>本文标题：</strong><a href="https://www.stringbug.com/p/011601202009/">Vue 学习笔记6</a></li><li><strong>本文作者：</strong><a href="https://www.stringbug.com">YiHua Lee</a></li><li><strong>本文链接：</strong><a href="https://www.stringbug.com/p/011601202009/">https://www.stringbug.com/p/011601202009/</a></li><li><strong>版权声明：</strong><span>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</span></li></ul><div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相关文章</span><br><span>  1.<a class="is-size-6" href="/p/021601202009/" target="_blank">Vue 学习笔记7</a><br></span><span>  2.<a class="is-size-6" href="/p/591501202009/" target="_blank">Vue 学习笔记5</a><br></span><span>  3.<a class="is-size-6" href="/p/571501202009/" target="_blank">Vue 学习笔记4</a><br></span><span>  4.<a class="is-size-6" href="/p/551501202009/" target="_blank">Vue 学习笔记3</a><br></span><span>  5.<a class="is-size-6" href="/p/201501202009/" target="_blank">Vue 学习笔记2</a><br></span><span>  6.<a class="is-size-6" href="/p/181501202009/" target="_blank">Vue 学习笔记1</a><br></span><span>  7.<a class="is-size-6" href="/p/262322202008/" target="_blank">ES6 学习笔记</a><br></span><span>  8.<a class="is-size-6" href="/p/591112202007/" target="_blank">JSON 学习笔记</a><br></span></div></div><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/social-share.js/1.0.16/css/share.min.css"><div class="social-share"></div><script src="https://cdnjs.loli.net/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/p/021601202009/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Vue 学习笔记7</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/p/591501202009/"><span class="level-item">Vue 学习笔记5</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><div class="title is-5">评论</div><div id="comment-container"></div><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/gitalk/1.6.0/gitalk.css"><script> $.getScript('/js/gitalk.min.js', function () { 
+            var gitalk = new Gitalk({
+            language:'zh-CN',
+            id: 'aa3cd3c94c82fb6fe6e6f14ac53a1203',
+            repo: 'LeeYiua.github.io',
+            owner: 'LeeYiua',
+            clientID: 'a20ca25986ec6943de5a',
+            clientSecret: '8cb6ef445e0b72d72727df2843eff95264006e51',
+            admin: ["LeeYiua"],
+            createIssueManually: true,
+            distractionFreeMode: false,
+            perPage: 10,
+            pagerDirection: 'last',
+            
+            
+            enableHotKey: true,
+            isLocked: false
+        })
+        gitalk.render('comment-container')});</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget toc-scroll" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-webpack" href="#webpack"><span>webpack</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-安装" href="#安装"><span>安装</span></a></li><li><a class="is-flex toc-item" id="toc-item-核心概念" href="#核心概念"><span>核心概念</span></a></li><li><a class="is-flex toc-item" id="toc-item-编写webpack配置" href="#编写webpack配置"><span>编写webpack配置</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-入口entry" href="#入口entry"><span>入口entry</span></a></li><li><a class="is-flex toc-item" id="toc-item-output-出口" href="#output-出口"><span>output 出口</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-执行打包" href="#执行打包"><span>执行打包</span></a></li><li><a class="is-flex toc-item" id="toc-item-测试运行" href="#测试运行"><span>测试运行</span></a></li><li><a class="is-flex toc-item" id="toc-item-打包CSS" href="#打包CSS"><span>打包CSS</span></a><ul class="menu-list toc"><li><a class="is-flex toc-item" id="toc-item-安装加载器" href="#安装加载器"><span>安装加载器</span></a></li><li><a class="is-flex toc-item" id="toc-item-index-js引入css文件" href="#index-js引入css文件"><span>index.js引入css文件</span></a></li><li><a class="is-flex toc-item" id="toc-item-配置加载器" href="#配置加载器"><span>配置加载器</span></a></li><li><a class="is-flex toc-item" id="toc-item-重新打包" href="#重新打包"><span>重新打包</span></a></li></ul></li><li><a class="is-flex toc-item" id="toc-item-script脚本" href="#script脚本"><span>script脚本</span></a></li><li><a class="is-flex toc-item" id="toc-item-打包HTML" href="#打包HTML"><span>打包HTML</span></a></li><li><a class="is-flex toc-item" id="toc-item-热更新的web服务" href="#热更新的web服务"><span>热更新的web服务</span></a></li></ul></li></ul></div></div><script type="text/javascript" async>
+        $(document).ready(function () { //参考自 https://github.com/ppoffice/hexo-theme-icarus/pull/616/files
+            var observerTopMargin;
+            var scrollObserver;
+            var headerElems = $(".headerlink");
+            var activeTocItem;
+        
+            function initIntersectionObserver(docHeight) {
+                observerTopMargin = docHeight;
+                scrollObserver = new IntersectionObserver(scrollCallBack,
+                    {
+                        root: null,  // viewpoint
+                        rootMargin: docHeight + "px 0px -80% 0px"  // cover top 30% of viewport to the top of document
+                    })
+            }
+        
+            function scrollCallBack(entries, observer) {
+                if ($(window).scrollTop() > observerTopMargin * 0.7) { 
+                    // User somehow scroll to 70% of observerTopMargin (which is inited as 200% document height)
+                    // Observer top margin need to extend to cover all the space to the top of the document
+                    initIntersectionObserver(observerTopMargin * 2)
+                    observer.disconnect();
+                    return;
+                }
+                let toActive;
+                if (entries[0].intersectionRatio == 1) {  // enter viewed area
+                    let entry = entries.reduce((u, v) => (u.target.toc_id > v.target.toc_id ? u : v));  // get the lowest item
+                    toActive = $("#toc-item-" + $(entry.target).attr("href").substr(1));
+                } else {
+                    let entry = entries.reduce((u, v) => (u.target.toc_id < v.target.toc_id ? u : v));  // get the highest item
+                    let idx = Math.max(entry.target.toc_id - 1, 0);
+                    toActive = $("#toc-item-" + $(headerElems[idx]).attr("href").substr(1));
+                }
+                if (activeTocItem) activeTocItem.removeClass("is-current");
+                activeTocItem = toActive
+                activeTocItem.addClass("is-current");
+            }
+        
+            initIntersectionObserver($(document).height() * 2);
+            headerElems.each(function (index, obj) {
+                obj.toc_id = index;
+                scrollObserver.observe(obj);
+            })
+        });</script></div><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="is-rounded" src="/img/avatar.png" alt="Lee Hua"></figure><p class="title is-size-4 is-block line-height-inherit">Lee Hua</p><p class="is-size-6 is-block">世间美好，与你环环相扣</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Guangdong province, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">188</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">17</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">39</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.stringbug.com/" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/LeeYiua"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://www.facebook.com/profile.php?id=100042691507857"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://www.weibo.com/u/7259950838"><i class="fab fa-weibo"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:lyh9420@icloud.com"><i class="fa fa-envelope"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><a class="media-left" href="/p/021601202009/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image04.png" alt="Vue 学习笔记7"></p></a><div class="media-content size-small"><p><time dateTime="2020-09-01T08:02:47.000Z">2020-09-01 16:02:47</time></p><p class="title is-6"><a class="link-muted" href="/p/021601202009/">Vue 学习笔记7</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Java-Web/">Java Web</a></p></div></article><article class="media"><a class="media-left" href="/p/011601202009/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image03.png" alt="Vue 学习笔记6"></p></a><div class="media-content size-small"><p><time dateTime="2020-09-01T08:01:16.000Z">2020-09-01 16:01:16</time></p><p class="title is-6"><a class="link-muted" href="/p/011601202009/">Vue 学习笔记6</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Java-Web/">Java Web</a></p></div></article><article class="media"><a class="media-left" href="/p/591501202009/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image02.png" alt="Vue 学习笔记5"></p></a><div class="media-content size-small"><p><time dateTime="2020-09-01T07:59:51.000Z">2020-09-01 15:59:51</time></p><p class="title is-6"><a class="link-muted" href="/p/591501202009/">Vue 学习笔记5</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Java-Web/">Java Web</a></p></div></article><article class="media"><a class="media-left" href="/p/571501202009/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image01.png" alt="Vue 学习笔记4"></p></a><div class="media-content size-small"><p><time dateTime="2020-09-01T07:57:30.000Z">2020-09-01 15:57:30</time></p><p class="title is-6"><a class="link-muted" href="/p/571501202009/">Vue 学习笔记4</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Java-Web/">Java Web</a></p></div></article><article class="media"><a class="media-left" href="/p/551501202009/"><p class="image is-64x64"><img class="thumbnail" src="/../../thumbnail/image28.png" alt="Vue 学习笔记3"></p></a><div class="media-content size-small"><p><time dateTime="2020-09-01T07:55:41.000Z">2020-09-01 15:55:41</time></p><p class="title is-6"><a class="link-muted" href="/p/551501202009/">Vue 学习笔记3</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Java-Web/">Java Web</a></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/Java/"><span class="level-start"><span class="level-item">Java</span></span><span class="level-end"><span class="level-item tag">76</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Java-Web/"><span class="level-start"><span class="level-item">Java Web</span></span><span class="level-end"><span class="level-item tag">44</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Java-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="level-start"><span class="level-item">Java 设计模式</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Maven/"><span class="level-start"><span class="level-item">Maven</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/MyBatis/"><span class="level-start"><span class="level-item">MyBatis</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/MySQL/"><span class="level-start"><span class="level-item">MySQL</span></span><span class="level-end"><span class="level-item tag">15</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Redis/"><span class="level-start"><span class="level-item">Redis</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Spring/"><span class="level-start"><span class="level-item">Spring</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><a class="level is-mobile is-marginless" href="/categories/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/09/"><span class="level-start"><span class="level-item">九月 2020</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/08/"><span class="level-start"><span class="level-item">八月 2020</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/07/"><span class="level-start"><span class="level-item">七月 2020</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/06/"><span class="level-start"><span class="level-item">六月 2020</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/05/"><span class="level-start"><span class="level-item">五月 2020</span></span><span class="level-end"><span class="level-item tag">108</span></span></a></li><a class="level is-mobile is-marginless" href="/archives/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Java%E5%9F%BA%E7%A1%80/"><span class="tag">Java基础</span><span class="tag is-grey-lightest">63</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/"><span class="tag">Python网络爬虫</span><span class="tag is-grey-lightest">16</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySQL%E5%9F%BA%E7%A1%80/"><span class="tag">MySQL基础</span><span class="tag is-grey-lightest">15</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Request-Response/"><span class="tag">Request&amp;Response</span><span class="tag is-grey-lightest">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java-JDBC/"><span class="tag">Java JDBC</span><span class="tag is-grey-lightest">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Vue/"><span class="tag">Vue</span><span class="tag is-grey-lightest">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Servlet/"><span class="tag">Servlet</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Jsp/"><span class="tag">Jsp</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"><span class="tag">Java网络编程</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Redis/"><span class="tag">Redis</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Tomcat/"><span class="tag">Tomcat</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/LeetCode/"><span class="tag">LeetCode</span><span class="tag is-grey-lightest">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Annocation/"><span class="tag">Annocation</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JQuery/"><span class="tag">JQuery</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Maven/"><span class="tag">Maven</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="tag">Python操作数据库</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%85%B6%E4%BB%96/"><span class="tag">其他</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/AOP/"><span class="tag">AOP</span><span class="tag is-grey-lightest">1</span></a></div></div><div class="field is-grouped is-grouped-multiline"><a class="tags has-addons" href="/tags/"><span class="tag">查看全部&gt;&gt;</span></a></div></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=LeeHuasBlog&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="LeeHuasBlog" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button is-primary" type="submit" value="订阅"></div></div><p class="help">输入邮箱开始订阅，更博后邮件通知！</p></form></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Lee Hua&#039;s Blog" height="28"></a><p class="size-small"><span>&copy; 2020 YiHua Lee</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> <br><span>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "❤️本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已运行 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！❤️";
+        }var now = new Date();setInterval("createTime('2020/04/24 14:41:28')", 250,"");</script><br></span><div class="size-small"><span>❤️感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次光临！❤️</span></div></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/removeif"><i class="fab fa-github"></i></a></p></div><div class="sideMusic"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="/js/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><meting-js style="width: auto;height: 2000px;" server="netease" type="playlist" id="2364053447" theme="#2980b9" loop="all" autoplay="false" order="list" storageName="aplayer-setting" lrctype="0" list-max-height="400px" fixed="true"></meting-js></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://www.stringbug.com',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back-to-top.js" defer></script><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.12/js/lightgallery-all.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><!--!--><!--!--><!--!--><script src="/js/toc.js" defer></script><script src="/js/main.js" defer></script><script>$.getScript('/js/comment-issue-data.js',function(){loadIssueData('a20ca25986ec6943de5a','8cb6ef445e0b72d72727df2843eff95264006e51','LeeYiua','LeeYiua.github.io',false);})</script><link rel="stylesheet" href="/css/insight.css"><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"></div></div></div></div><script>(function (window) {
+            var INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: '文章',
+                    PAGES: '页面',
+                    CATEGORIES: '分类',
+                    TAGS: '标签',
+                    UNTITLED: '(无标题)',
+                },
+                CONTENT_URL: '/content.json',
+            };
+            window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+        })(window);</script><script src="/js/insight.js" defer></script></body></html>
